@@ -40,26 +40,26 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="Nome" value="<?php echo $Produto->Nome; ?>" type="text" class="validate" required>
-                        <label for="Nome">Nome</label>
+                        <label for="Nome">Nome *</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="Preco" value="<?php echo $Produto->Valor; ?>" type="text" class="validate" required>
-                        <label for="Preco">Valor</label>
+                        <input name="Preco" value="<?php echo $Produto->Valor; ?>" type="number" style="-moz-appearance: textfield;" class="validate" required>
+                        <label for="Preco">Valor *</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input name ="Descricao" value="<?php echo $Produto->Descricao; ?>" type="text" class="validate" required>
-                        <label for="Descricao">Descricao</label>
+                        <label for="Descricao">Descricao *</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Imagem</span>
-                            <input name="imagemArquivo"type="file" >
+                            <input name="imagemArquivo"type="file" required>
                         </div>
                         <div class="file-path-wrapper">
                             <input name ="imagem" value="<?php echo $Produto->Nome_imagem; ?>" class="file-path validate" type="text">

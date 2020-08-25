@@ -33,10 +33,10 @@
                 <h3 class="center"><a >Lista de Produtos</a></h3>
             </div>
             <div class="col s6">
-                <a href="Cadastro" class="btn btn-medium right waves-effect waves-light red">Adicionar Produto</a>
+                <a href="Cadastro" class="btn btn-medium right waves-effect waves-light red">Adicionar Produto<i class="material-icons">add_circle_outline</i></a>
             </div>
         </div>
-        <table class="striped">
+        <table class="striped lighten-5">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -53,7 +53,7 @@
                         <td><?php echo $Produto->Nome; ?></td>
                         <td><?php echo $Produto->Descricao; ?></td>
                         <td><?php echo $Produto->Valor; ?></td>
-                        <td><?php echo "<img class='responsive-img'  style='max-height: 100px; max-width:100px' src=./imagens/$Produto->Nome_imagem>" ?></td>
+                        <td><?php echo "<img class='responsive-img'  style='max-height: 150px; max-width:150px' src=./imagens/$Produto->Nome_imagem>" ?></td>
                         <td>
                             <a href="editar/<?php echo $Produto->id; ?>" class="waves-effect waves-light btn-small " style="margin-right: 10px "><i class="material-icons">edit</i></a>
                             <a href="excluir/<?php echo $Produto->id; ?>"class="waves-effect waves-light btn-small red"><i class="material-icons">delete</i></a></td>
