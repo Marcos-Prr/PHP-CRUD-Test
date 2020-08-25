@@ -46,7 +46,7 @@
 
     
    Com a tabela Criada Acesse a pasta da aplicação: 
-     ``http://Localhost/PHP-CRUD-Test/Index``
+     http://Localhost/PHP-CRUD-Test/Index
         
 
 ## Comentários
