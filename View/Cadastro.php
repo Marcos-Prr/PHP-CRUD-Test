@@ -1,40 +1,41 @@
-<?php require_once './Model/Produtos.php'; 
-    $urlGet = $_GET['url'];
-    $urlGet = array_filter(explode('/',$urlGet));
-    if($urlGet[0] == 'editar' && (empty($_POST)) ){
-        $Produto = Produtos::selecionaPorId($urlGet[1]);    
-    }
-    $action = ($urlGet[0]=='editar') ? $urlGet[1] : 'criar' ;
+<?php require_once './Model/Produtos.php';
+$urlGet = $_GET['url'];
+$urlGet = array_filter(explode('/', $urlGet));
+if ($urlGet[0] == 'editar' && (empty($_POST))) {
+    $Produto = Produtos::selecionaPorId($urlGet[1]);
+}
+$action = ($urlGet[0] == 'editar') ? $urlGet[1] : 'criar';
+$tipoForm = ($urlGet[0] == 'editar') ? 'Editar Produto' : 'Cadastro de novo produto';
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <!--Import Google Icon Font-->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="https://w7.pngwing.com/pngs/173/720/png-transparent-online-shopping-shopping-cart-computer-icons-favicon-angle-text-rectangle.png" />
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
+
     <link type="text/css" rel="stylesheet" href="./PHP-CRUD-Test/materialize/css/materialize.min.css" media="screen,projection" />
 
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--Let browser know website is optimized for mobile-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper" style="background-color: #6D00AB;">
-            <a href="#!" class="brand-logo center col s12">Cadastro de Produtos</a>
-        </div>
-    </nav>
+    <?php include('./View/NavBar.php'); ?>
+
+    <h5 class="center brand-logo grey-text"><?= $tipoForm ?></h5>
+
 
     <div class="container" style="margin-top: 10px;">
+        <hr />
         <div class="row">
             <form action="<?php echo $action ?>" method="POST" class="col s12" enctype="multipart/form-data">
                 <div class="row">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name ="Descricao" value="<?php echo $Produto->Descricao; ?>" type="text" class="validate" required>
+                        <input name="Descricao" value="<?php echo $Produto->Descricao; ?>" type="text" class="validate" required>
                         <label for="Descricao">Descricao *</label>
                     </div>
                 </div>
@@ -59,16 +60,17 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Imagem</span>
-                            <input name="imagemArquivo"type="file" required>
+                            <input name="imagemArquivo" type="file" required>
                         </div>
                         <div class="file-path-wrapper">
-                            <input name ="imagem" value="<?php echo $Produto->Nome_imagem; ?>" class="file-path validate" type="text">
+                            <input name="imagem" value="<?php echo $Produto->Nome_imagem; ?>" class="file-path validate" type="text">
                         </div>
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light red right" style="margin-right:10px;" type="button" name="action">
+                <hr />
+                <a href="index" class="btn waves-effect waves-light red right" style="margin-right:10px;" type="button" name="action">
                     Cancelar
-                </button>
+                </a>
                 <button class="btn waves-effect waves-light right" style="margin-right:10px;" type="submit" name="action">Enviar
                     <i class="material-icons right">send</i>
                 </button>
@@ -76,7 +78,6 @@
             </form>
         </div>
     </div>
-    <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="./PHP-CRUD-Test/materialize/js/materialize.min.js"></script>
 </body>
 
