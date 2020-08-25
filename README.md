@@ -17,8 +17,14 @@
     
      git clone https://github.com/Marcos-Prr/PHP-CRUD-Test
   
-   Após isso , extraia o xampp que tem no repositório para seu computador. 
+   Após isso , realize o download e a instalação do xampp no link a seguir:
+   
+    https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.5.30/xampp-portable-win32-5.5.30-7-VC11-installer.exe/download
       
+   Após instalar, extraia o arquivo php.rar para o seguinte diretório e faça a substituição:
+   
+     .xampp\
+				
    Mova o  projeto para o workspace do xampp  localizado em :
      
      ..xampp\htdocs\
@@ -31,7 +37,7 @@
      #service mysql start
     
     
-    A tabela já está criada no xampp que está no repositório, porém caso queira importá-la para outro xampp, também está disponivel o arquivo .sql. Para importar basta seguir os passos:
+   Para importar a tabela CRUD_Produtos basta seguir os passos:
     
      - Acesse o localhost e prossiga para o phpmyadmin.
      - Selecione o banco que deseja importar a tabela.
@@ -39,14 +45,9 @@
      - Arquivo selecionado basta clicar em executar e a tabela estará criada.
 
     
-    Com a tabela Criada Acesse a pasta da aplicação: 
+   Com a tabela Criada Acesse a pasta da aplicação: 
      http://Localhost/PHP-CRUD-Test/Index
-
-    
-
-     
-    
-   
+        
 
 ## Comentários
 Este projeto apresenta um sistema CRUD básico de cadastro de produtos utilizando padrão MVC,singleton e com php puro.
