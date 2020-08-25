@@ -44,7 +44,7 @@ $tipoForm = ($urlGet[0] == 'editar') ? 'Editar Produto' : 'Cadastro de novo prod
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="Preco" value="<?php echo $Produto->Valor; ?>" type="number" style="-moz-appearance: textfield;" class="validate" required>
+                        <input name="Preco" value="<?php echo $Produto->Valor; ?>" type="number"  step="any" min="0" style="-moz-appearance: textfield;" class="validate" required>
                         <label for="Preco">Valor *</label>
                     </div>
                 </div>
