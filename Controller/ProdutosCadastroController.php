@@ -65,10 +65,20 @@ class ProdutosCadastroController
         $targetDir = "./imagens/";
         $target_file = $targetDir . basename($arquivo["imagemArquivo"]["name"]);
         $uploadOk = 1;
+        $extensao = pathinfo($_FILES["imagemArquivo"]["name"], PATHINFO_EXTENSION);
 
+        $extensoesPermitidas = array(
+            "png",
+            "jpg",
+            "jpeg"
+        );
+
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            throw new Exception("extensão de arquivo nao permitida. Extensoes permitidas são : png ,jpg e jpeg.");
+        }
         if (file_exists($target_file)) {
             $uploadOk = 0;
-            throw new Exception("Arquivo já existe");
+            throw new Exception("Arquivo já existe ou nao é compativel");
         }
         if ($arquivo["imagemArquivo"]["size"] > 1500000) {
             $uploadOk = 0;
