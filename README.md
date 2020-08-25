@@ -18,10 +18,12 @@
      git clone https://github.com/Marcos-Prr/PHP-CRUD-Test
   
    Após isso , realize o download e a instalação do xampp no link a seguir:
-    ``https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.5.30/xampp-portable-win32-5.5.30-7-VC11-installer.exe/download``
+   
+    https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.5.30/xampp-portable-win32-5.5.30-7-VC11-installer.exe/download
       
    Após instalar, extraia o arquivo php.rar para o seguinte diretório e faça a substituição:
-			  	``.xampp\``
+   
+     .xampp\
 				
    Mova o  projeto para o workspace do xampp  localizado em :
      
