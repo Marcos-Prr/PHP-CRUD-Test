@@ -11,7 +11,6 @@ class ProdutosCadastroController
     public function criar()
     {
         try {
-
             $this->salvaImagem($_FILES);
             Produtos::criar($_POST);
             header('Refresh:0 , url=index');
@@ -23,14 +22,12 @@ class ProdutosCadastroController
     public function editar($idProduto)
     {
         if (empty($_POST)) {
-
             echo  $this->render('Cadastro.php');
         } else {
             try {
                 if (!empty($_FILES)) {
                     $this->salvaImagem($_FILES);
                 }
-
                 Produtos::editar($_POST, $idProduto);
             } catch (Exception $e) {
                 echo $e->getMessage();
@@ -42,7 +39,6 @@ class ProdutosCadastroController
     public function excluir($idProduto)
     {
         try {
-
             Produtos::excluir($idProduto);
             header('Refresh:0 , url=../index');
         } catch (Exception $e) {
@@ -57,7 +53,6 @@ class ProdutosCadastroController
 
     public function render($arquivo)
     {
-
         ob_start();
         include('./View/' . $arquivo);
         $content = ob_get_contents();

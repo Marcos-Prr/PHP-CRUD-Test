@@ -1,9 +1,13 @@
-<?php require_once './Model/Produtos.php';
+<?php 
+require_once './Model/Produtos.php';
+
 $urlGet = $_GET['url'];
 $urlGet = array_filter(explode('/', $urlGet));
+
 if ($urlGet[0] == 'editar' && (empty($_POST))) {
     $Produto = Produtos::selecionaPorId($urlGet[1]);
 }
+
 $action = ($urlGet[0] == 'editar') ? $urlGet[1] : 'criar';
 $tipoForm = ($urlGet[0] == 'editar') ? 'Editar Produto' : 'Cadastro de novo produto';
 ?>
@@ -14,16 +18,11 @@ $tipoForm = ($urlGet[0] == 'editar') ? 'Editar Produto' : 'Cadastro de novo prod
 <head>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/png" href="https://w7.pngwing.com/pngs/173/720/png-transparent-online-shopping-shopping-cart-computer-icons-favicon-angle-text-rectangle.png" />
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link type="text/css" rel="stylesheet" href="./PHP-CRUD-Test/materialize/css/materialize.min.css" media="screen,projection" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
 </head>
@@ -32,7 +31,6 @@ $tipoForm = ($urlGet[0] == 'editar') ? 'Editar Produto' : 'Cadastro de novo prod
     <?php include('./View/NavBar.php'); ?>
 
     <h5 class="center brand-logo grey-text"><?= $tipoForm ?></h5>
-
 
     <div class="container" style="margin-top: 10px;">
         <hr />

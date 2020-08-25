@@ -66,6 +66,6 @@
             <hr />
         </div>
     </main>
-    
+
     <?php include('./View/footer.php'); ?>
 </body>
