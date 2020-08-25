@@ -1,7 +1,8 @@
 <?php 
+require_once './Model/Connection.php';
     class Produtos{
         public static function ListaTodosProdutos(){
-            $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+            $con = Connection::getConn();
             $sqlProdutos = "SELECT * FROM produtos ORDER BY ID DESC";
             $sqlProdutos = $con->prepare($sqlProdutos);
             $sqlProdutos->execute();
@@ -15,7 +16,7 @@
         }
 
         public static function criar($postDados){
-            $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+            $con = Connection::getConn();
 
             $sqlInsert = $con->prepare('INSERT INTO produtos (Nome,Valor,Descricao,Nome_imagem) VALUES (:Nome,:Valor,:Descricao,:Nome_imagem)');
             $sqlInsert->bindValue(':Nome', $postDados['Nome']);
@@ -30,7 +31,7 @@
         }
     
         public static function editar($postDados,$idProduto){
-            $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+            $con = Connection::getConn();
 
             $Produto = Produtos::selecionaPorId($idProduto);
             $targetDir = "./imagens/". $Produto->Nome_imagem;
@@ -50,7 +51,7 @@
         }
     
         public static function excluir($idProduto){
-            $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+            $con = Connection::getConn();
 
             $Produto = Produtos::selecionaPorId($idProduto);
             $targetDir = "./imagens/". $Produto->Nome_imagem;
@@ -67,7 +68,7 @@
 
         public static function selecionaPorId($idProduto){
 
-            $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+            $con = Connection::getConn();
             $convertIdProduto = intval($idProduto);
             $sqlSeleciona = $con->prepare("SELECT * FROM produtos WHERE id = :id");
             $sqlSeleciona->bindValue(':id', $convertIdProduto);
