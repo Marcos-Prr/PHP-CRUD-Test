@@ -1,3 +1,12 @@
+<?php require_once './Model/Produtos.php'; 
+    $urlGet = $_GET['url'];
+    $urlGet = array_filter(explode('/',$urlGet));
+    if($urlGet[0] == 'editar' && (empty($_POST)) ){
+        $Produto = Produtos::selecionaPorId($urlGet[1]);    
+    }
+    $action = ($urlGet[0]=='editar') ? $urlGet[1] : 'criar' ;
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,33 +31,27 @@
     <nav>
         <div class="nav-wrapper" style="background-color: #6D00AB;">
             <a href="#!" class="brand-logo center col s12">Cadastro de Produtos</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href=""><i class="material-icons">search</i></a></li>
-                <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
-            </ul>
         </div>
     </nav>
 
     <div class="container" style="margin-top: 10px;">
         <div class="row">
-            <form class="col s12">
+            <form action="<?php echo $action ?>" method="POST" class="col s12" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="Nome" type="text" class="validate" required>
+                        <input name="Nome" value="<?php echo $Produto->Nome; ?>" type="text" class="validate" required>
                         <label for="Nome">Nome</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="Preco" type="text" class="validate">
+                        <input name="Preco" value="<?php echo $Produto->Valor; ?>" type="text" class="validate" required>
                         <label for="Preco">Valor</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="Descricao" type="text" class="validate">
+                        <input name ="Descricao" value="<?php echo $Produto->Descricao; ?>" type="text" class="validate" required>
                         <label for="Descricao">Descricao</label>
                     </div>
                 </div>
@@ -56,10 +59,10 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Imagem</span>
-                            <input type="file">
+                            <input name="imagemArquivo"type="file" >
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                            <input name ="imagem" value="<?php echo $Produto->Nome_imagem; ?>" class="file-path validate" type="text">
                         </div>
                     </div>
                 </div>
