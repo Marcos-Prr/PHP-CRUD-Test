@@ -22,8 +22,8 @@ class ProdutosCadastroController
 
     public function editar($idProduto)
     {
-
         if (empty($_POST)) {
+
             echo  $this->render('Cadastro.php');
         } else {
             try {
@@ -42,6 +42,7 @@ class ProdutosCadastroController
     public function excluir($idProduto)
     {
         try {
+
             Produtos::excluir($idProduto);
             header('Refresh:0 , url=../index');
         } catch (Exception $e) {

@@ -35,7 +35,7 @@
                     <hr />
                 </div>
                 <div class="col s6">
-                    <a href="Cadastro" class="btn btn-medium right waves-effect waves-light green">Adicionar Produto<i class="material-icons">add_circle_outline</i></a>
+                    <a href="Cadastro" class="btn btn-small right waves-effect waves-light ">Novo Produto</a>
                 </div>
             </div>
             <table class="striped lighten-5">
@@ -54,7 +54,7 @@
                         <tr>
                             <td><?php echo $Produto->Nome; ?></td>
                             <td><?php echo $Produto->Descricao; ?></td>
-                            <td><?php echo $Produto->Valor; ?></td>
+                            <td><?php echo $Produto->Valor; ?> R$</td>
                             <td><?php echo "<img class='responsive-img'  style='max-height: 150px; max-width:150px' src=./imagens/$Produto->Nome_imagem>" ?></td>
                             <td>
                                 <a href="editar/<?php echo $Produto->id; ?>" class="waves-effect waves-light btn-small green " style="margin-right: 10px "><i class="material-icons">edit</i></a>

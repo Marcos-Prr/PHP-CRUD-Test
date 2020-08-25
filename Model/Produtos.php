@@ -75,7 +75,6 @@ require_once './Model/Connection.php';
             $sqlSeleciona->execute();
             $Produto =  $sqlSeleciona->fetchObject('Produtos');
 
-
             return $Produto;
         }
     }
