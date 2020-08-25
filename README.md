@@ -9,7 +9,7 @@
 
  ## Requisitos 
 
- - PHP 5.5.30 ;
+ - PHP 5.5.3 ou superior;
  - xampp ;
  
  ## Instalação
