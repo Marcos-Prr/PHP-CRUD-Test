@@ -43,8 +43,8 @@
      - Arquivo selecionado basta clicar em executar e a tabela estará criada.
 
     
-    Com a tabela Criada Acesse a pasta da aplicação: 
-     http://Localhost/PHP-CRUD-Test/Index
+   Com a tabela Criada Acesse a pasta da aplicação: 
+     ``http://Localhost/PHP-CRUD-Test/Index``
         
 
 ## Comentários
