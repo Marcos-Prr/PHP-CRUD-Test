@@ -34,8 +34,8 @@ require_once './Model/Connection.php';
             $con = Connection::getConn();
 
             $Produto = Produtos::selecionaPorId($idProduto);
-            $targetDir = "./imagens/". $Produto->Nome_imagem;
-            unlink($targetDir);
+            $caminhoDiretorio = "./imagens/". $Produto->Nome_imagem;
+            unlink($caminhoDiretorio);
 
             $sqlEditar = $con->prepare("UPDATE produtos SET Nome = :Nome, Valor = :Valor , Descricao = :Descricao , Nome_imagem = :Nome_imagem WHERE id = :id ");
             $sqlEditar->bindValue(':Nome', $postDados['Nome']);
@@ -54,8 +54,8 @@ require_once './Model/Connection.php';
             $con = Connection::getConn();
 
             $Produto = Produtos::selecionaPorId($idProduto);
-            $targetDir = "./imagens/". $Produto->Nome_imagem;
-            unlink($targetDir);
+            $caminhoDiretorio = "./imagens/". $Produto->Nome_imagem;
+            unlink($caminhoDiretorio);
             
             $sqlDelete = $con->prepare("DELETE FROM produtos WHERE id = :id");
             $sqlDelete->bindValue(':id', $idProduto);

@@ -62,8 +62,8 @@ class ProdutosCadastroController
 
     public function salvaImagem($arquivo)
     {
-        $targetDir = "./imagens/";
-        $target_file = $targetDir . basename($arquivo["imagemArquivo"]["name"]);
+        $caminhoDiretorio = "./imagens/";
+        $caminhoArquivo = $caminhoDiretorio . basename($arquivo["imagemArquivo"]["name"]);
         $uploadOk = 1;
         $extensao = pathinfo($_FILES["imagemArquivo"]["name"], PATHINFO_EXTENSION);
 
@@ -76,7 +76,7 @@ class ProdutosCadastroController
         if (!in_array($extensao, $extensoesPermitidas)) {
             throw new Exception("extensão de arquivo nao permitida. Extensoes permitidas são : png ,jpg e jpeg.");
         }
-        if (file_exists($target_file)) {
+        if (file_exists($caminhoArquivo)) {
             $uploadOk = 0;
             throw new Exception("Arquivo já existe ou nao é compativel");
         }
@@ -85,7 +85,7 @@ class ProdutosCadastroController
             throw new Exception("Arquivo de imagem muito grande");
         }
         if ($uploadOk == 1) {
-            move_uploaded_file($arquivo["imagemArquivo"]["tmp_name"], $target_file);
+            move_uploaded_file($arquivo["imagemArquivo"]["tmp_name"], $caminhoArquivo);
         }
     }
 }
