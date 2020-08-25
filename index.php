@@ -1,11 +1,6 @@
 <?php
-            $url = (isset($_GET['url'])) ? $_GET['url']:'Inicio';
-            $url = array_filter(explode('/',$url));
-            $file = 'View/'.$url[0].'.php';
-            if(is_file($file)){
-                include($file);
-            }else{
-                include('View/404.php');
-            }
-
+    require_once './routes.php';
+    require_once './Controller/ProdutosCadastroController.php';
+    $core = new routes;
+    $core->start($_GET);
         ?>
