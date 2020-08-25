@@ -10,30 +10,30 @@ class ProdutosCadastroController
 
     public function criar()
     {
-        Produtos::criar($_POST);
+        try {
+            $arquivoDiretorio = './imagens/';
 
-        $arquivoDiretorio = './imagens/';
+            $targetDir = "./imagens/";
+            $target_file = $targetDir . basename($_FILES["imagemArquivo"]["name"]);
+            $uploadOk = 1;
 
-        $targetDir = "./imagens/";
-        $target_file = $targetDir . basename($_FILES["imagemArquivo"]["name"]);
-        $uploadOk = 1;
+            if (file_exists($target_file)) {
+                $uploadOk = 0;
+                throw new Exception("Arquivo já existe");
+            }
+            if ($_FILES["imagemArquivo"]["size"] > 500000) {
+                $uploadOk = 0;
+                throw new Exception("Arquivo de imagem muito grande");
+            }
 
-        if (file_exists($target_file)) {
-            echo "Arquivo já existe";
-            $uploadOk = 0;
-        }
+            Produtos::criar($_POST);
 
-        if ($_FILES["imagemArquivo"]["size"] > 500000) {
-            echo "Arquivo de imagem muito grande";
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
-            echo "Upload da imagem falhou";
-            header('Refresh:2 , url=index');
-        } else {
-            move_uploaded_file($_FILES["imagemArquivo"]["tmp_name"], $target_file);
-            header('Refresh:2 , url=index');
+            if ($uploadOk == 1) {
+                move_uploaded_file($_FILES["imagemArquivo"]["tmp_name"], $target_file);
+                header('Refresh:2 , url=index');
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
     }
 
@@ -43,15 +43,46 @@ class ProdutosCadastroController
         if (empty($_POST)) {
             echo  $this->render('Cadastro.php');
         } else {
-            Produtos::editar($_POST, $idProduto);
+            try {
+                if (!empty($_FILES)) {
+
+                    $targetDir = "./imagens/";
+                    $target_file = $targetDir . basename($_FILES["imagemArquivo"]["name"]);
+                    $uploadOk = 1;
+
+                    if (file_exists($target_file)) {
+                        $uploadOk = 0;
+                        throw new Exception("Arquivo já existe");
+                    }
+                    if ($_FILES["imagemArquivo"]["size"] > 500000) {
+                        $uploadOk = 0;
+                        throw new Exception("Arquivo de imagem muito grande");
+                    }
+
+                    if ($uploadOk == 1) {
+                        move_uploaded_file($_FILES["imagemArquivo"]["tmp_name"], $target_file);
+                    }
+                }
+
+                Produtos::editar($_POST, $idProduto);
+
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
             header('Refresh:0 , url = ../index ');
         }
     }
 
     public function excluir($idProduto)
     {
-        Produtos::excluir($idProduto);
-        header('Refresh:2 , url=../index');
+        try{
+            Produtos::excluir($idProduto);
+            header('Refresh:2 , url=../index');
+        }
+        catch (Exception $e){
+            return $e->getMessage();
+        }
+
     }
 
     public function Cadastro()

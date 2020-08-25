@@ -22,11 +22,19 @@
             $sqlInsert->bindValue(':Valor', $postDados['Preco']);
             $sqlInsert->bindValue(':Descricao', $postDados['Descricao']);
             $sqlInsert->bindValue(':Nome_imagem', $postDados['imagem']);
-            $sqlInsert->execute();
+            $resultado = $sqlInsert->execute();
+
+            if($resultado == false){
+                throw new Exception("Falha ao inserir produto");
+            }
         }
     
         public static function editar($postDados,$idProduto){
             $con = new PDO('mysql: host=localhost; dbname=crud_produtos;','root','');
+
+            $Produto = Produtos::selecionaPorId($idProduto);
+            $targetDir = "./imagens/". $Produto->Nome_imagem;
+            unlink($targetDir);
 
             $sqlEditar = $con->prepare("UPDATE produtos SET Nome = :Nome, Valor = :Valor , Descricao = :Descricao , Nome_imagem = :Nome_imagem WHERE id = :id ");
             $sqlEditar->bindValue(':Nome', $postDados['Nome']);
@@ -34,8 +42,11 @@
             $sqlEditar->bindValue(':Descricao', $postDados['Descricao']);
             $sqlEditar->bindValue(':Nome_imagem', $postDados['imagem']);
             $sqlEditar->bindValue(':id', $idProduto);
-            $sqlEditar->execute();
+            $resultado = $sqlEditar->execute();
 
+            if($resultado == false){
+                throw new Exception("Falha ao alterar dados do Produto");
+            }
         }
     
         public static function excluir($idProduto){
@@ -47,8 +58,11 @@
             
             $sqlDelete = $con->prepare("DELETE FROM produtos WHERE id = :id");
             $sqlDelete->bindValue(':id', $idProduto);
-            $sqlDelete->execute();
+            $resultado = $sqlDelete->execute();
 
+            if($resultado == false){
+                throw new Exception("Falha ao excluir produto");
+            }
         }
 
         public static function selecionaPorId($idProduto){
